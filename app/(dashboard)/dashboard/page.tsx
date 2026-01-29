@@ -1,8 +1,8 @@
 import DashboardHeader from "@/components/Shared/DashboardHeader";
 import { StatsCard } from "@/components/Shared/StatsCard";
 import { statsData } from "@/data/statsData";
-import SalesDetailsChart from "@/components/Dashboard/SalesDetailsChart";
-import OrderDetailsTable from "@/components/Dashboard/OrderDetailsTable";
+import SalesDetailsChart from "@/components/(Dashboard)/Dashboard/SalesDetailsChart";
+import OrderDetailsTable from "@/components/(Dashboard)/Dashboard/OrderDetailsTable";
 
 export default function DashboardPage() {
   return (

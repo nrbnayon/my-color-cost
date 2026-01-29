@@ -1,52 +1,44 @@
-import { Package, Clock, MapPin, CheckCircle, Truck } from "lucide-react";
-
+import { IoMdCloseCircle } from "react-icons/io";
+import { LineChart, History } from "lucide-react";
 export const statsData = [
   {
-    title: "Total Parcels",
-    value: "85",
-    subtitle: "8.5% Up from last month",
-    icon: Package,
-    iconColor: "#1D92ED",
-    iconBgColor: "#DFF0FF", // light blue
+    title: "Total Order",
+    value: "10293",
+    percentage: "1.3%",
+    subtitle: "Up from past week",
+    imageIcon: "/icons/box.svg",
+    iconColor: "#7438FF",
+    iconBgColor: "#e1d5ff",
+    isUp: true,
   },
   {
-    title: "Pending Assignment",
-    value: "22",
-    subtitle: "8.5% Up from last month",
-    icon: Clock,
-    iconColor: "#F0B100",
-    iconBgColor: "#FFF6E5", // light yellow
+    title: "Total Sales",
+    value: "$89,000",
+    percentage: "4.3%",
+    subtitle: "Down from yesterday",
+    icon: LineChart, 
+    iconColor: "#4AD991",
+    iconBgColor: "#d9f7e7", 
+    isUp: false,
   },
   {
-    title: "Ongoing",
-    value: "25",
-    subtitle: "8.5% Up from last month",
-    icon: MapPin,
-    iconColor: "#AD46FF",
-    iconBgColor: "#F5EDFF", // light purple
+    title: "Total Pending",
+    value: "2040",
+    percentage: "1.8%",
+    subtitle: "Up from yesterday",
+    icon: History,
+    iconColor: "#FEC12C", 
+    iconBgColor: "#FDF1E2",
+    isUp: true,
   },
   {
-    title: "Delivered Today",
-    value: "11",
-    subtitle: "8.5% Up from yesterday",
-    icon: CheckCircle,
-    iconColor: "#00C950",
-    iconBgColor: "#E6F9EF", // light green
-  },
-  {
-    title: "Active Drivers",
-    value: "24",
-    subtitle: "8.5% Up from yesterday",
-    icon: Truck,
-    iconColor: "#FF6900",
-    iconBgColor: "#FFE8D9", // light orange
-  },
-  {
-    title: "Total Drivers",
-    value: "14",
-    subtitle: "8.5% Up from yesterday",
-    icon: Truck,
-    iconColor: "#615FFF",
-    iconBgColor: "#EEEEFF", // light purple
+    title: "Order cancel",
+    value: "40,689",
+    percentage: "8.5%",
+    subtitle: "Up from yesterday",
+    icon: IoMdCloseCircle,
+    iconColor: "#E21B1B", 
+    iconBgColor: "#f8cfcf",
+    isUp: true,
   },
 ];

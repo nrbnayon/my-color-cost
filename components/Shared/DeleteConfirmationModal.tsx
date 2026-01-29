@@ -73,7 +73,7 @@ export function DeleteConfirmationModal({
             <button
               onClick={onConfirm}
               disabled={isLoading}
-              className="flex-1 flex items-center justify-center px-4 py-2.5 bg-gradient-green hover:bg-red-700 text-white rounded-lg font-semibold shadow-sm transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 flex items-center justify-center px-4 py-2.5 bg-red-500 hover:bg-red-700 text-white rounded-lg font-semibold shadow-sm transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

@@ -16,7 +16,10 @@ export type NotificationType =
   | "emergency_alert"
   | "driver_status_changed"
   | "seller_verified"
-  | "seller_suspended";
+  | "seller_suspended"
+  | "stock_alert"
+  | "payment_update"
+  | "product_review";
 
 export type NotificationStatus = "read" | "unread";
 export type NotificationPriority = "low" | "medium" | "high" | "urgent";

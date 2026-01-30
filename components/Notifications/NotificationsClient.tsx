@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useUser } from "@/hooks/useUser";
 import { allNotificationsData } from "@/data/allNotificationsData";
-import { Notification, NotificationType } from "@/types/notification";
+import { Notification } from "@/types/notification";
 import {
     Bell,
     Package,
@@ -12,16 +12,17 @@ import {
     CheckCircle2,
     XCircle,
     UserCheck,
-    UserPlus,
     AlertOctagon,
     Clock,
     X,
-    ExternalLink,
     Calendar,
-    MapPin,
     User,
     Hash,
-    Info
+    Info,
+    CreditCard,
+    ShoppingCart,
+    Star,
+    Box
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Pagination } from "@/components/Shared/Pagination";
@@ -36,7 +37,11 @@ const NOTIFICATION_ICONS: Record<string, any> = {
     emergency_alert: AlertOctagon,
     seller_verified: UserCheck,
     seller_suspended: XCircle,
-    new_order: UserPlus,
+    new_order: ShoppingCart,
+    payment_received: CreditCard,
+    payment_update: CreditCard,
+    stock_alert: Box,
+    product_review: Star,
     default: Bell
 };
 
@@ -58,30 +63,7 @@ export default function NotificationsClient() {
     const filteredNotifications = useMemo(() => {
         if (!role) return [];
 
-        // Filter based on role
-        let roleNotifications = notifications;
-
-        if (role === "user") {
-            const userTypes: NotificationType[] = [
-                "parcel_delivered",
-                "driver_assigned",
-                "parcel_picked_up",
-                "payment_received",
-                "new_order"
-            ];
-            roleNotifications = notifications.filter(n => userTypes.includes(n.type));
-        } else if (role === "admin") {
-            const adminTypes: NotificationType[] = [
-                "driver_location_off",
-                "delivery_request_rejected",
-                "emergency_alert",
-                "seller_verified",
-                "seller_suspended",
-                "delivery_request_accepted",
-                "parcel_delivered"
-            ];
-            roleNotifications = notifications.filter(n => adminTypes.includes(n.type));
-        }
+        let roleNotifications = [...notifications];
 
         // Filter based on tab
         if (activeTab === "unread") {

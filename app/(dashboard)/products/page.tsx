@@ -12,6 +12,8 @@ import { toast } from "sonner";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import Image from "next/image";
+import { ProductGridSkeleton } from "@/components/Skeleton/ProductGridSkeleton";
+import { useEffect } from "react";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -21,6 +23,15 @@ export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>(productsData);
   const [productToDelete, setProductToDelete] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate initial loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const filteredProducts = products.filter(p => 
     p.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -31,7 +42,7 @@ export default function ProductsPage() {
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
-
+  
   const handleDeleteClick = (id: string) => {
     setProductToDelete(id);
   };
@@ -39,7 +50,6 @@ export default function ProductsPage() {
   const handleConfirmDelete = async () => {
     if (productToDelete) {
       // Simulate API delete
-      // await deleteProduct(productToDelete);
       setProducts(prev => prev.filter(p => p.id !== productToDelete));
       setProductToDelete(null);
       toast.success("Product deleted successfully");
@@ -72,7 +82,9 @@ export default function ProductsPage() {
         </div>
 
         {/* Product Grid */}
-        {paginatedProducts.length > 0 ? (
+        {isLoading ? (
+             <ProductGridSkeleton count={ITEMS_PER_PAGE} />
+        ) : paginatedProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
               {paginatedProducts.map((product) => (
                 <ProductCard
@@ -91,7 +103,7 @@ export default function ProductsPage() {
         )}
 
         {/* Pagination */}
-        {filteredProducts.length > ITEMS_PER_PAGE && (
+        {!isLoading && filteredProducts.length > ITEMS_PER_PAGE && (
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}

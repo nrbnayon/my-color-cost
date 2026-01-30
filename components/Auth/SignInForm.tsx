@@ -54,6 +54,7 @@ export const SignInForm = () => {
 
       // Mock response data
       const mockUser = {
+        name: "Admin User",
         email: data.email,
         role: "admin", // Default mock role
       };

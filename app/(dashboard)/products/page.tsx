@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Link from "next/link";
 import { Plus } from "lucide-react";
+import Image from "next/image";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -83,7 +84,8 @@ export default function ProductsPage() {
               ))}
             </div>
         ) : (
-            <div className="text-center py-20 text-gray-500">
+            <div className="text-center py-20 text-gray-500 flex flex-col items-center gap-4">
+              <Image src="/images/empty-state.webp" alt="Empty State" width={200} height={200} />
                 No products found.
             </div>
         )}

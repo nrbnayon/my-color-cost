@@ -4,6 +4,8 @@ import { statsData } from "@/data/statsData";
 import SalesDetailsChart from "@/components/(Dashboard)/Dashboard/SalesDetailsChart";
 import OrderDetailsTable from "@/components/(Dashboard)/Dashboard/OrderDetailsTable";
 
+import { orders } from "@/data/orderData"; 
+
 export default function DashboardPage() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -22,7 +24,7 @@ export default function DashboardPage() {
             <SalesDetailsChart />
 
             {/* Table */}
-            <OrderDetailsTable title="Order Details" />
+            <OrderDetailsTable title="Order Details" data={orders.slice(0, 10)} enablePagination={false} />
           </div>
       </div>
     </div>
